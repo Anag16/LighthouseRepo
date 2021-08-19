@@ -1,16 +1,18 @@
 // FUNCTION IMPLEMENTATION
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
+
+const assertObjectsEqual = function(actual, expected) {
+  let equal = eqObjects(actual, expected);
+  if (equal){
     console.log(`Assertion Passed: [${actual}] === [${expected}]`);
-    
-  } else {
+    return true;
+  }
+  else{
     console.log(`Assertion Failed: [${actual}] !== [${expected}]`);
+    return false;
   }
 };
 
 const eqArrays = function(array1, array2) {
-
-  
   if (array1.length === array2.length) {
     for (let i = 0; i < array2.length; i++) {
       if (array1[i] !== array2[i]) {
@@ -23,14 +25,10 @@ const eqArrays = function(array1, array2) {
   return true;
 };
 
-// Returns true if both objects have identical keys with identical values.
-// Otherwise you get back a big fat false!
 const eqObjects = function(object1, object2) {
   
   let keysArray1 = Object.keys(object1); //Extracting keys from object and creating an array of keys.
-  let valuesArray1= Object.values(object1);//Extracting values from object and creating an array of values.
   let keysArray2 = Object.keys(object2);//Extracting keys from object and creating an array of keys.
-  let valuesArray2= Object.values(object2);//Extracting values from object and creating an array of values.
 
   if (keysArray1.length === keysArray2.length){ //Comparing size of the objects
   for(let key of keysArray1){
@@ -60,40 +58,15 @@ return true; //Return true. If the function gets to this point, the objects are 
 
 const ab = { a: "1", b: "2" };
 const ba = { b: "2", a: "1" };
-assertEqual(eqObjects(ab, ba), true); // => true
+assertObjectsEqual(ab, ba); // => true
 
 const abc = { a: "1", b: "2", c: "3" };
-assertEqual(eqObjects(ab, abc), false); // => false
+assertObjectsEqual(ab, abc); // => false
 
 
 const cd = { c: "1", d: ["2", 3] };
 const dc = { d: ["2", 3], c: "1" };
-assertEqual(eqObjects(cd, dc), true); // => true
+assertObjectsEqual(cd, dc); // => true
 
 const cd2 = { c: "1", d: ["2", 3, 4] };
-assertEqual(eqObjects(cd, cd2),false); // => false
-
-
-
-
-
-
-
-
-
-//RECURSION EXAMPLE
-function counttoZero(number){
-  if (number == 0){
-  	console.log (number);
-  	console.log ("We found the 0");
-  }
-  else{
-    console.log (number);
-    console.log("Still looking for 0");
-    number--;
-    counttoZero(number);
-  }
-}
- 
-//Uncomment to run
-// counttoZero(3);
+assertObjectsEqual(cd, cd2); // => false
