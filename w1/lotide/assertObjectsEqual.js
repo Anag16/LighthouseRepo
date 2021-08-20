@@ -2,11 +2,10 @@
 
 const assertObjectsEqual = function(actual, expected) {
   let equal = eqObjects(actual, expected);
-  if (equal){
+  if (equal) {
     console.log(`Assertion Passed: [${actual}] === [${expected}]`);
     return true;
-  }
-  else{
+  } else {
     console.log(`Assertion Failed: [${actual}] !== [${expected}]`);
     return false;
   }
@@ -30,29 +29,27 @@ const eqObjects = function(object1, object2) {
   let keysArray1 = Object.keys(object1); //Extracting keys from object and creating an array of keys.
   let keysArray2 = Object.keys(object2);//Extracting keys from object and creating an array of keys.
 
-  if (keysArray1.length === keysArray2.length){ //Comparing size of the objects
-  for(let key of keysArray1){
+  if (keysArray1.length === keysArray2.length) { //Comparing size of the objects
+    for (let key of keysArray1) {
     // console.log(`Comparing ${object1[key]} with ${object2[key]}`);
-    if (Array.isArray(object1[key]) && Array.isArray(object2[key])){    //If the two values are arrays, use the eqArrays function and pass the two arrays as arguments. The eqArrays function returns true if they are equal or false otherwise.
+      if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {    //If the two values are arrays, use the eqArrays function and pass the two arrays as arguments. The eqArrays function returns true if they are equal or false otherwise.
       // console.log("Comparing two arrays");
-      return eqArrays(object1[key], object2[key]);
-    }
-    else if (!Array.isArray(object1[key]) && !Array.isArray(object2[key])){ //If they are not array, check if BOTH are not arrays. 
-      if (object1[key] !== object2[key]){ //Comparing values from objects using the keys. Only if they are BOTH NOT ARRAYS. 
+        return eqArrays(object1[key], object2[key]);
+      } else if (!Array.isArray(object1[key]) && !Array.isArray(object2[key])) { //If they are not array, check if BOTH are not arrays.
+        if (object1[key] !== object2[key]) { //Comparing values from objects using the keys. Only if they are BOTH NOT ARRAYS.
         // console.log("Comparing two primitive values");
+          return false;
+        }
+      } else { //This means one is an array and the other isn't. They are not equal, return false.
         return false;
       }
-    }
-    else{ //This means one is an array and the other isn't. They are not equal, return false.
-      return false;
-    }
     
+    }
+  } else {
+    return false; //Return false if objects do not have the same number of keys. They are obviously different.
   }
-} else{
-  return false; //Return false if objects do not have the same number of keys. They are obviously different.
-}
 
-return true; //Return true. If the function gets to this point, the objects are equal.
+  return true; //Return true. If the function gets to this point, the objects are equal.
 };
 
 
