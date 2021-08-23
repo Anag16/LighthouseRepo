@@ -12,6 +12,6 @@ assertEqual(result, ['Lighthouse', 'Labs']);
 
 describe('#Tail', () => {
   it("returns true for,['Hello', 'Lighthouse', 'Labs'] , ['Lighthouse', 'Labs']", () => {
-    assert.strictEqual(assertEqual(tail(['Hello', 'Lighthouse', 'Labs']), true));
+    assert.deepEqual(assertEqual(tail(['Hello', 'Lighthouse', 'Labs']), true));
   });
 });
