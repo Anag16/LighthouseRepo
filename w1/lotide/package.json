@@ -1,7 +1,7 @@
 {
-  "name": "lotide",
+  "name": "@anag_ruiz/lotide",
   "version": "1.0.0",
-  "description": "",
+  "description": " List of functions that will save you some time from coding, great for beginners and more advanced learners",
   "main": "assertArraysEqual.js",
   "directories": {
     "test": "test"
@@ -9,7 +9,7 @@
   "scripts": {
     "test": "mocha"
   },
-  "author": "",
+  "author": "Ana Gabriela Ruiz",
   "license": "ISC",
   "dependencies": {
     "chai": "^4.3.4",

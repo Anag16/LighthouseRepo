@@ -21,3 +21,4 @@ shopping(3, calculatePrice);
  
 
 
+module.exports = shopping;

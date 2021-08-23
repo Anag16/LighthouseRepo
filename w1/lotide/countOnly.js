@@ -58,3 +58,5 @@ const result2 = countOnly(countries, {"Canada" : true, "Japan": true, "China": f
 console.log(result1);
 console.log(result2);
 /* assertEqual(result1, {"Fang": 2, "Jason": 1}); */
+
+module.exports = countOnly;

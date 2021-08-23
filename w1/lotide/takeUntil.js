@@ -27,4 +27,4 @@ const results2 = takeUntil(numbers, x => x > 6);
 console.log(results1);
 console.log(results2);
   
-  
+module.exports = takeUntil;
